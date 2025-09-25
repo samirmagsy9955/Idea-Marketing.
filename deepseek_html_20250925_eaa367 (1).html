@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idea Marketing | Motion Graphics & Digital Marketing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for Theming */
+        :root {
+            --primary-bg: #0d0d0d;
+            --secondary-bg: #1a1a1a;
+            --accent-orange: #ff6b00;
+            --accent-blue: #00d9ff;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --card-bg: rgba(26, 26, 26, 0.8);
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --border-radius: 8px;
+        }
+
+        .light-mode {
+            --primary-bg: #f5f5f5;
+            --secondary-bg: #ffffff;
+            --text-primary: #0d0d0d;
+            --text-secondary: #4a4a4a;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-orange), var(--accent-blue));
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--accent-orange), var(--accent-blue));
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(13, 13, 13, 0.95);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--accent-orange), var(--accent-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--secondary-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: linear-gradient(45deg, var(--accent-orange), var(--accent-blue));
+            transform: translateY(-3px);
+        }
+
+        .theme-toggle {
+            background: var(--secondary-bg);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: linear-gradient(45deg, var(--accent-orange), var(--accent-blue));
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent-blue);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-blue);
+            color: var(--primary-bg);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--accent-orange), var(--accent-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Portfolio Section */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background: var(--secondary-bg);
+            border: none;
+            border-radius: 30px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: linear-gradient(45deg, var(--accent-orange), var(--accent-blue));
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .portfolio-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-links {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .portfolio-link {
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .portfolio-link:hover {
+            background: var(--accent-blue);
+            color: var(--primary-bg);
+        }
+
+        /* Video Showcase */
+        .video-showcase {
+            background: var(--secondary-bg);
+        }
+
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .video-item {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .video-player {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            background: var(--primary-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-icon {
+            font-size: 4rem;
+            color: var(--accent-blue);
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            padding-right: 20px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--accent-orange), var(--accent-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 400px;
+            background: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-icon {
+            font-size: 5rem;
+            color: var(--accent-blue);
+        }
+
+        .about-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent-orange), var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--secondary-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-bg);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--accent-orange), var(--accent-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-links h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            background: var(--primary-bg);
+            border: none;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            color: var(--text-primary);
+        }
+
+        .newsletter-btn {
+            padding: 0 20px;
+            background: linear-gradient(45deg, var(--accent-orange), var(--accent-blue));
+            border: none;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            color: white;
+            cursor: pointer;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .credit {
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Resource Sections */
+        .resource-section {
+            margin-bottom: 60px;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .resource-item {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            transition: var(--transition);
+            text-align: center;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .resource-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .resource-title {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .resource-link {
+            display: inline-block;
+            padding: 5px 10px;
+            background: var(--accent-blue);
+            color: var(--primary-bg);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .resource-link:hover {
+            background: var(--accent-orange);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-text {
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--primary-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .portfolio-filters {
+                gap: 10px;
+            }
+
+            .filter-btn {
+                padding: 6px 15px;
+                font-size: 0.9rem;
+            }
+
+            .resource-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 60px 0;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Idea Marketing</a>
+
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#resources" class="nav-link">Our Work</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="social-icons">
+                    <a href="https://drive.google.com/drive/folders/1iE9BVNEV80GCc97zZa53KveO_W9EFGMY"
+                        class="social-icon" title="Google Drive Portfolio" target="_blank">
+                        <i class="fab fa-google-drive"></i>
+                    </a>
+                    <a href="https://www.facebook.com/ideamarkering/photos" class="social-icon" title="Facebook Page"
+                        target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">We Create Motion That Moves Business</h1>
+            <p class="hero-subtitle">Idea Marketing specializes in cutting-edge motion graphics, video production, and
+                digital marketing solutions that captivate audiences and drive results.</p>
+
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn">View Our Work</a>
+                <a href="#contact" class="btn btn-secondary">Get Quote</a>
+            </div>
+
+            <div class="social-icons">
+                <a href="https://drive.google.com/drive/folders/1iE9BVNEV80GCc97zZa53KveO_W9EFGMY" class="social-icon"
+                    title="View Full Portfolio on Drive" target="_blank">
+                    <i class="fab fa-google-drive"></i>
+                </a>
+                <a href="https://www.facebook.com/ideamarkering/photos" class="social-icon"
+                    title="Follow Our Latest Work" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3 class="service-title">Motion Graphics Design</h3>
+                    <p>Captivating animations that bring your brand to life and engage your audience.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="service-title">Video Production & Editing</h3>
+                    <p>Professional video content from concept to final cut for all platforms.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3 class="service-title">Social Media Marketing</h3>
+                    <p>Strategic campaigns that maximize engagement and reach across social platforms.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="service-title">Brand Identity Animation</h3>
+                    <p>Animated logos and brand elements that make your identity unforgettable.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="service-title">3D Animation & VFX</h3>
+                    <p>Immersive 3D visuals and effects that push creative boundaries.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="service-title">Digital Campaigns</h3>
+                    <p>End-to-end digital marketing strategies that deliver measurable results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Featured Portfolio</h2>
+
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="commercials">Commercials</button>
+                <button class="filter-btn" data-filter="social">Social Media</button>
+                <button class="filter-btn" data-filter="brand">Brand Films</button>
+                <button class="filter-btn" data-filter="motion">Motion Graphics</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Portfolio items will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="section" id="resources">
+        <div class="container">
+            <h2 class="section-title">Our Creative Work</h2>
+
+            <!-- Motion Graphics Resources -->
+            <div class="resource-section">
+                <h3 style="margin-bottom: 30px; font-size: 1.8rem; text-align: center;">Motion Graphics</h3>
+                <div class="resource-grid" id="motion-graphics-grid">
+                    <!-- Motion graphics items will be dynamically loaded here -->
+                </div>
+            </div>
+
+            <!-- Social Media Designs -->
+            <div class="resource-section">
+                <h3 style="margin-bottom: 30px; font-size: 1.8rem; text-align: center;">Social Media Designs</h3>
+                <div class="resource-grid" id="social-media-grid">
+                    <!-- Social media design items will be dynamically loaded here -->
+                </div>
+            </div>
+
+            <!-- Logo Designs -->
+            <div class="resource-section">
+                <h3 style="margin-bottom: 30px; font-size: 1.8rem; text-align: center;">Logo Designs</h3>
+                <div class="resource-grid" id="logo-designs-grid">
+                    <!-- Logo design items will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Showcase Section -->
+    <section class="section video-showcase">
+        <div class="container">
+            <h2 class="section-title">Video Highlights</h2>
+
+            <div class="video-container">
+                <!-- Video items will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Idea Marketing was founded with a vision to revolutionize the way brands communicate through
+                        motion. Our team of creative professionals combines technical expertise with artistic vision to
+                        deliver exceptional results.</p>
+
+                    <p>We believe that powerful visuals combined with strategic storytelling can transform brands and
+                        create lasting impressions. Our approach is collaborative, innovative, and always focused on
+                        achieving our clients' goals.</p>
+
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-text">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-text">Happy Clients</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5</div>
+                            <div class="stat-text">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">15</div>
+                            <div class="stat-text">Awards Won</div>
+                        </div>
+                    </div>
+
+                    <div class="about-social">
+                        <a href="https://drive.google.com/drive/folders/1iE9BVNEV80GCc97zZa53KveO_W9EFGMY" class="btn"
+                            target="_blank">
+                            <i class="fab fa-google-drive"></i> Explore Our Drive Portfolio
+                        </a>
+                        <a href="https://www.facebook.com/ideamarkering/photos" class="btn btn-secondary"
+                            target="_blank">
+                            <i class="fab fa-facebook-f"></i> Follow us on Facebook
+                        </a>
+                    </div>
+                </div>
+
+                <div class="about-image">
+                    <div class="about-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Our Location</h3>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Phone Number</h3>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email Address</h3>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>Working Hours</h3>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="social-icons">
+                        <a href="https://drive.google.com/drive/folders/1iE9BVNEV80GCc97zZa53KveO_W9EFGMY"
+                            class="social-icon" title="Google Drive Portfolio" target="_blank">
+                            <i class="fab fa-google-drive"></i>
+                        </a>
+                        <a href="https://www.facebook.com/ideamarkering/photos" class="social-icon"
+                            title="Facebook Page" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control" required>
+                                <option value="" disabled selected>Project Type</option>
+                                <option value="motion-graphics">Motion Graphics</option>
+                                <option value="video-production">Video Production</option>
+                                <option value="social-media">Social Media Marketing</option>
+                                <option value="brand-animation">Brand Animation</option>
+                                <option value="3d-animation">3D Animation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Idea Marketing</div>
+                    <p>Creating motion that moves business forward through innovative design and strategic marketing.
+                    </p>
+
+                    <div class="footer-social">
+                        <a href="https://drive.google.com/drive/folders/1iE9BVNEV80GCc97zZa53KveO_W9EFGMY"
+                            class="social-icon" title="Google Drive Portfolio" target="_blank">
+                            <i class="fab fa-google-drive"></i>
+                        </a>
+                        <a href="https://www.facebook.com/ideamarkering/photos" class="social-icon"
+                            title="Facebook Page" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#resources">Our Work</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Motion Graphics</a></li>
+                        <li><a href="#">Video Production</a></li>
+                        <li><a href="#">Social Media Marketing</a></li>
+                        <li><a href="#">3D Animation</a></li>
+                        <li><a href="#">Digital Campaigns</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for the latest updates and offers.</p>
+
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Your Email">
+                        <button type="submit" class="newsletter-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Idea Marketing. </p>
+                <div class="developer">
+                    <p class="credit">Made by Eng. Samir Magdy</p>
+                    <a href="https://wa.me/201129724884" target="_blank">
+
+                        <div class="whatsapp-icon">
+                            <i class="fab fa-whatsapp fa-2x"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Company Data
+        const companyData = {
+            name: "Idea Marketing",
+            facebook: "https://www.facebook.com/ideamarkering/photos",
+            drive: "https://drive.google.com/drive/folders/1iE9BVNEV80GCc97zZa53KveO_W9EFGMY"
+        };
+
+        // Motion Graphic Resources
+        const motionGraphics = [
+            "https://drive.google.com/file/d/1SXPdtN0oIAIa7ADzZ3cIzBQsJW39hdV9/view?usp=drive_link",
+            "https://drive.google.com/file/d/1FRwcFr7I4Y4HRoYcfZj3giw1dMagEaTR/view?usp=drive_link",
+            "https://drive.google.com/file/d/1Sk6-ThL-kz0FkLx1eimS6vhDY09D0WVa/view?usp=drive_link",
+            "https://drive.google.com/file/d/1oI37L0PY_E6G0HJKXj-KvCnoCXOY6nSj/view?usp=drive_link",
+            "https://drive.google.com/file/d/1OpZWyOTheOW6ncPzo6A9Gnup8COMkstQ/view?usp=drive_link",
+            "https://drive.google.com/file/d/1LLlugmNBgGMJ1WbS-p1udgt7sO6o7v7y/view?usp=drive_link",
+            "https://drive.google.com/file/d/1hvqdVazU_5GtB1VYu1y_7sijPvHVqa78/view?usp=drive_link",
+            "https://drive.google.com/file/d/1VBCXlRoRbCrULubX4beSeT8RgfezIeU3/view?usp=drive_link"
+        ];
+
+        // Social Media Designs
+        const socialMediaDesigns = [
+            "https://drive.google.com/file/d/1dV5du39ximRH6PGH75yFFxlcrgApDagO/view?usp=drive_link",
+            "https://drive.google.com/file/d/1s-OWSOi1WppJIdG6NWnIbTYzLAlDe-RF/view?usp=drive_link",
+            "https://drive.google.com/file/d/14Y_8L17oIkwx7roT-SwS6HPRXAL0oFvF/view?usp=drive_link",
+            "https://drive.google.com/file/d/10vBKR7LqvAfc3FX0VBjaBs62FcWAuGBh/view?usp=drive_link",
+            "https://drive.google.com/file/d/1EDNAgbpboRH2Nk3i93HPaWyfVmy4SeWr/view?usp=drive_link",
+            "https://drive.google.com/file/d/1RV1K357I2kZuLlIkiz4ZxFqeU2RiOrDu/view?usp=drive_link",
+            "https://drive.google.com/file/d/1R78tmUh8TXk0yaq1UZX8mI_5DQueWrWj/view?usp=drive_link",
+            "https://drive.google.com/file/d/1D2VFyUwIbytnms71Hs5g0frfDh2CrFxj/view?usp=drive_link"
+        ];
+
+        // Logo Designs
+        const logoDesigns = [
+            "https://drive.google.com/file/d/1D6oDuB3PBC8KNp2BkU-xoafmMoopPanm/view?usp=drive_link",
+            "https://drive.google.com/file/d/1D4ERjMlrATkZTr2a05KgpcAnYqCe4JjU/view?usp=drive_link",
+            "https://drive.google.com/file/d/1WYbBx4SrrJUFKRAQCKid7IySQFAXrrPP/view?usp=drive_link",
+            "https://drive.google.com/file/d/1WWXXHhcc4349ZOHjvBf7nAcqMu9UfmWH/view?usp=drive_link",
+            "https://drive.google.com/file/d/1ZTRFLo2MD10Pbpw-Z2pY0Jv_OgA7WNXo/view?usp=drive_link",
+            "https://drive.google.com/file/d/1JI9Ic4MPsNqexaGpIER0jP8YU_j4WFoK/view?usp=drive_link"
+        ];
+
+        // Portfolio Data
+        const portfolioItems = [
+            {
+                id: 1,
+                title: "TechBrand Commercial",
+                category: "commercials",
+                driveLink: companyData.drive,
+                facebookLink: companyData.facebook
+            },
+            {
+                id: 2,
+                title: "Food Festival Animation",
+                category: "motion",
+                driveLink: companyData.drive,
+                facebookLink: companyData.facebook
+            },
+            {
+                id: 3,
+                title: "Fashion Brand Social Campaign",
+                category: "social",
+                driveLink: companyData.drive,
+                facebookLink: companyData.facebook
+            },
+            {
+                id: 4,
+                title: "Corporate Identity Film",
+                category: "brand",
+                driveLink: companyData.drive,
+                facebookLink: companyData.facebook
+            },
+            {
+                id: 5,
+                title: "Automotive Commercial",
+                category: "commercials",
+                driveLink: companyData.drive,
+                facebookLink: companyData.facebook
+            },
+            {
+                id: 6,
+                title: "Music Video Animation",
+                category: "motion",
+                driveLink: companyData.drive,
+                facebookLink: companyData.facebook
+            }
+        ];
+
+        // Video Data
+        const videoItems = [
+            {
+                id: 1,
+                title: "TechVision Product Launch",
+                description: "A dynamic product launch video featuring cutting-edge motion graphics.",
+                videoSrc: "#",
+                driveLink: companyData.drive,
+                facebookLink: companyData.facebook
+            },
+            {
+                id: 2,
+                title: "Urban Fashion Campaign",
+                description: "A social media campaign blending live action with animated elements.",
+                videoSrc: "#",
+                driveLink: companyData.drive,
+                facebookLink: companyData.facebook
+            },
+            {
+                id: 3,
+                title: "EcoBrand Sustainability Story",
+                description: "An animated brand story highlighting environmental initiatives.",
+                videoSrc: "#",
+                driveLink: companyData.drive,
+                facebookLink: companyData.facebook
+            }
+        ];
+
+        // DOM Elements
+        const themeToggle = document.getElementById('themeToggle');
+        const header = document.getElementById('header');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const portfolioGrid = document.querySelector('.portfolio-grid');
+        const videoContainer = document.querySelector('.video-container');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const contactForm = document.getElementById('contactForm');
+        const motionGraphicsGrid = document.getElementById('motion-graphics-grid');
+        const socialMediaGrid = document.getElementById('social-media-grid');
+        const logoDesignsGrid = document.getElementById('logo-designs-grid');
+
+        // Theme Toggle
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            const icon = themeToggle.querySelector('i');
+            if (document.body.classList.contains('light-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.querySelector('i').classList.remove('fa-times');
+            });
+        });
+
+        // Portfolio Filtering
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+                filterPortfolio(filter);
+            });
+        });
+
+        // Filter Portfolio Items
+        function filterPortfolio(filter) {
+            const items = portfolioItems;
+            portfolioGrid.innerHTML = '';
+
+            const filteredItems = filter === 'all'
+                ? items
+                : items.filter(item => item.category === filter);
+
+            filteredItems.forEach(item => {
+                const portfolioItem = document.createElement('div');
+                portfolioItem.className = 'portfolio-item';
+                portfolioItem.innerHTML = `
+                    <h3 class="portfolio-title">${item.title}</h3>
+                    <div class="portfolio-links">
+                        <a href="${item.driveLink}" class="portfolio-link" target="_blank">
+                            <i class="fab fa-google-drive"></i> Drive
+                        </a>
+                        <a href="${item.facebookLink}" class="portfolio-link" target="_blank">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </a>
+                    </div>
+                `;
+                portfolioGrid.appendChild(portfolioItem);
+            });
+        }
+
+        // Load Resource Items
+        function loadResourceItems(resourceArray, container, type) {
+            container.innerHTML = '';
+            resourceArray.forEach((resource, index) => {
+                const resourceItem = document.createElement('div');
+                resourceItem.className = 'resource-item';
+                resourceItem.innerHTML = `
+                    <h3 class="resource-title">${type} Design ${index + 1}</h3>
+                    <a href="${resource}" class="resource-link" target="_blank">View on Drive</a>
+                `;
+                container.appendChild(resourceItem);
+            });
+        }
+
+        // Load Video Items
+        function loadVideos() {
+            videoItems.forEach(video => {
+                const videoItem = document.createElement('div');
+                videoItem.className = 'video-item';
+                videoItem.innerHTML = `
+                    <div class="video-player">
+                        <div class="video-icon">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>${video.title}</h3>
+                        <p>${video.description}</p>
+                        <div class="video-links">
+                            <a href="${video.driveLink}" class="portfolio-link" target="_blank">
+                                <i class="fab fa-google-drive"></i> View Full Project
+                            </a>
+                            <a href="${video.facebookLink}" class="portfolio-link" target="_blank">
+                                <i class="fab fa-facebook-f"></i> See Facebook Post
+                            </a>
+                        </div>
+                    </div>
+                `;
+                videoContainer.appendChild(videoItem);
+            });
+        }
+
+        // Form Submission
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            filterPortfolio('all');
+            loadVideos();
+            loadResourceItems(motionGraphics, motionGraphicsGrid, 'Motion Graphic');
+            loadResourceItems(socialMediaDesigns, socialMediaGrid, 'Social Media');
+            loadResourceItems(logoDesigns, logoDesignsGrid, 'Logo');
+
+            // Update social links throughout the site
+            document.querySelectorAll('a[href="#"]').forEach(link => {
+                if (link.querySelector('.fa-google-drive')) {
+                    link.href = companyData.drive;
+                } else if (link.querySelector('.fa-facebook-f')) {
+                    link.href = companyData.facebook;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
